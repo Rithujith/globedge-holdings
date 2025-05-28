@@ -23,7 +23,8 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: var(--text-color);
-    background-color: #f5f5f5;
+    background-color: #f0f5fa;
+    background-image: linear-gradient(to bottom, #e6f0fa, #f0f5fa);
 }
 
 .container {
@@ -256,7 +257,8 @@ nav {
 
 /* About Section */
 .about {
-    background-color: white;
+    background-color: #ffffff;
+    background-image: linear-gradient(to bottom, #ffffff, #f8fbff);
     text-align: center;
 }
 
@@ -267,7 +269,8 @@ nav {
 
 /* Services Section */
 .services {
-    background-color: #f8f9fa;
+    background-color: #e6f0fa;
+    background-image: linear-gradient(to bottom, #f0f5fa, #e6f0fa);
 }
 
 .services h2 {
@@ -314,7 +317,8 @@ nav {
 
 /* Contact Section */
 .contact {
-    background-color: white;
+    background-color: #ffffff;
+    background-image: linear-gradient(to bottom, #f8fbff, #ffffff);
     text-align: center;
 }
 
