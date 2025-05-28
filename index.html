@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Globedge Holdings</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="globedge_logo.png" alt="Globedge Holdings Logo">
+            </div>
+            <nav>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Welcome to Globedge Holdings</h1>
+            <p>Your global partner for travel, business solutions, construction, and career opportunities</p>
+            <a href="#services" class="btn">Explore Our Services</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Globedge Holdings</h2>
+            <p>Globedge Holdings is a multifaceted company dedicated to providing exceptional services across various sectors. With a focus on quality and customer satisfaction, we strive to exceed expectations in everything we do.</p>
+            <p>Our experienced team of professionals is committed to delivering innovative solutions tailored to meet your specific needs, whether you're looking for travel arrangements, business solutions, construction services, or career opportunities.</p>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="service-grid">
+                <div class="service-card" id="travel">
+                    <div class="service-icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <h3>Travel Services</h3>
+                    <p>Comprehensive travel solutions for individuals and businesses, including flight bookings, accommodation, and tour packages.</p>
+                    <a href="javascript:void(0)" class="btn service-btn" data-service="travel">Learn More</a>
+                </div>
+
+                <div class="service-card" id="business">
+                    <div class="service-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Business Solutions</h3>
+                    <p>Strategic business consulting, market analysis, and operational optimization to help your business grow and succeed.</p>
+                    <a href="javascript:void(0)" class="btn service-btn" data-service="business">Learn More</a>
+                </div>
+
+                <div class="service-card" id="construction">
+                    <div class="service-icon">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <h3>Construction Contracts</h3>
+                    <p>Professional construction services, project management, and contract handling for residential and commercial projects.</p>
+                    <a href="javascript:void(0)" class="btn service-btn" data-service="construction">Learn More</a>
+                </div>
+
+                <div class="service-card" id="jobs">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Job Search & Acquiring</h3>
+                    <p>Resume design, visa assistance for Dubai, job placement, accommodation setup, and paperwork handling.</p>
+                    <a href="javascript:void(0)" class="btn service-btn" data-service="jobs">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p>Get in touch with us to learn more about our services or to request a consultation.</p>
+            
+            <div class="contact-form-container">
+                <form id="contact-form" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service of Interest</label>
+                        <select id="service" name="service" required>
+                            <option value="">Select a service</option>
+                            <option value="travel">Travel Services</option>
+                            <option value="business">Business Solutions</option>
+                            <option value="construction">Construction Contracts</option>
+                            <option value="jobs">Job Search & Acquiring</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn submit-btn">Submit</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <div id="service-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modal-service-content"></div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="globedge_logo.png" alt="Globedge Holdings Logo">
+                    <p>Your global partner for success</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Business Avenue, Dubai, UAE</p>
+                    <p><i class="fas fa-phone"></i> +971 4 123 4567</p>
+                    <p><i class="fas fa-envelope"></i> info@globedgeholdings.com</p>
+                </div>
+                <div class="footer-social">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Globedge Holdings. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
