@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Services - Globedge Holdings</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Travel Page Specific Styles */
+        .travel-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1503220317375-aaad61436b1b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 150px 0;
+            margin-top: 90px;
+        }
+        
+        .booking-tabs {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .booking-tab {
+            padding: 12px 25px;
+            background-color: #f8f9fa;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .booking-tab:first-child {
+            border-radius: 5px 0 0 5px;
+        }
+        
+        .booking-tab:last-child {
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .booking-tab.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .booking-content {
+            display: none;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .booking-content.active {
+            display: block;
+        }
+        
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .package-card {
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .package-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .package-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .package-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .package-card:hover .package-image img {
+            transform: scale(1.1);
+        }
+        
+        .package-details {
+            padding: 20px;
+            background-color: white;
+        }
+        
+        .package-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .package-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+        
+        .package-features {
+            margin-bottom: 15px;
+        }
+        
+        .package-features li {
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .package-features i {
+            color: var(--primary-color);
+            margin-right: 10px;
+        }
+        
+        .package-cta {
+            text-align: center;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--text-color);
+        }
+        
+        .search-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .search-form .form-group {
+            margin-bottom: 0;
+        }
+        
+        .search-btn {
+            grid-column: 1 / -1;
+            justify-self: center;
+            min-width: 200px;
+        }
+        
+        .destination-highlight {
+            text-align: center;
+            margin-top: 80px;
+            margin-bottom: 40px;
+        }
+        
+        .testimonials {
+            background-color: #f8f9fa;
+            padding: 80px 0;
+            margin-top: 80px;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            font-size: 5rem;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            color: rgba(0, 86, 179, 0.1);
+            font-family: serif;
+        }
+        
+        .testimonial-content {
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+        
+        .author-details h4 {
+            margin-bottom: 5px;
+        }
+        
+        .author-details p {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="ChatGPT Image May 28, 2025, 08_58_25 PM.png" alt="Globedge Holdings Logo">
+                </a>
+                <div class="logo-text">
+                    <h1>Globedge Holdings</h1>
+                    <p>Your Global Partner for Success</p>
+                </div>
+            </div>
+            <nav>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="travel-hero">
+        <div class="container">
+            <h1>Travel Services</h1>
+            <p>Explore the world with Globedge Holdings. We offer comprehensive travel solutions tailored to your needs.</p>
+        </div>
+    </section>
+
+    <section class="booking-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Book Your Next Adventure</h2>
+                <p>Find the best deals on flights, hotels, and tour packages with our easy booking system.</p>
+            </div>
+
+            <div class="booking-tabs">
+                <button class="booking-tab active" data-tab="flights">Flights</button>
+                <button class="booking-tab" data-tab="hotels">Hotels</button>
+                <button class="booking-tab" data-tab="packages">Tour Packages</button>
+            </div>
+
+            <div id="flights" class="booking-content active">
+                <h3>Search for Flights</h3>
+                <form class="search-form">
+                    <div class="form-group">
+                        <label for="flight-from">From</label>
+                        <input type="text" id="flight-from" placeholder="City or Airport">
+                    </div>
+                    <div class="form-group">
+                        <label for="flight-to">To</label>
+                        <input type="text" id="flight-to" placeholder="City or Airport">
+                    </div>
+                    <div class="form-group">
+                        <label for="flight-depart">Departure Date</label>
+                        <input type="date" id="flight-depart">
+                    </div>
+                    <div class="form-group">
+                        <label for="flight-return">Return Date</label>
+                        <input type="date" id="flight-return">
+                    </div>
+                    <div class="form-group">
+                        <label for="flight-passengers">Passengers</label>
+                        <select id="flight-passengers">
+                            <option value="1">1 Passenger</option>
+                            <option value="2">2 Passengers</option>
+                            <option value="3">3 Passengers</option>
+                            <option value="4">4 Passengers</option>
+                            <option value="5">5+ Passengers</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn search-btn">Search Flights</button>
+                </form>
+            </div>
+
+            <div id="hotels" class="booking-content">
+                <h3>Find Hotels</h3>
+                <form class="search-form">
+                    <div class="form-group">
+                        <label for="hotel-destination">Destination</label>
+                        <input type="text" id="hotel-destination" placeholder="City or Hotel Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="hotel-checkin">Check-in Date</label>
+                        <input type="date" id="hotel-checkin">
+                    </div>
+                    <div class="form-group">
+                        <label for="hotel-checkout">Check-out Date</label>
+                        <input type="date" id="hotel-checkout">
+                    </div>
+                    <div class="form-group">
+                        <label for="hotel-rooms">Rooms</label>
+                        <select id="hotel-rooms">
+                            <option value="1">1 Room</option>
+                            <option value="2">2 Rooms</option>
+                            <option value="3">3 Rooms</option>
+                            <option value="4">4+ Rooms</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="hotel-guests">Guests</label>
+                        <select id="hotel-guests">
+                            <option value="1">1 Guest</option>
+                            <option value="2">2 Guests</option>
+                            <option value="3">3 Guests</option>
+                            <option value="4">4 Guests</option>
+                            <option value="5">5+ Guests</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn search-btn">Search Hotels</button>
+                </form>
+            </div>
+
+            <div id="packages" class="booking-content">
+                <h3>Explore Tour Packages</h3>
+                <form class="search-form">
+                    <div class="form-group">
+                        <label for="package-destination">Destination</label>
+                        <select id="package-destination">
+                            <option value="">Select Destination</option>
+                            <option value="europe">Europe</option>
+                            <option value="asia">Asia</option>
+                            <option value="americas">Americas</option>
+                            <option value="africa">Africa</option>
+                            <option value="middle-east">Middle East</option>
+                            <option value="oceania">Australia & Oceania</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="package-duration">Duration</label>
+                        <select id="package-duration">
+                            <option value="">Select Duration</option>
+                            <option value="1-3">1-3 Days</option>
+                            <option value="4-7">4-7 Days</option>
+                            <option value="8-14">8-14 Days</option>
+                            <option value="15+">15+ Days</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="package-budget">Budget</label>
+                        <select id="package-budget">
+                            <option value="">Select Budget</option>
+                            <option value="economy">Economy</option>
+                            <option value="standard">Standard</option>
+                            <option value="premium">Premium</option>
+                            <option value="luxury">Luxury</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn search-btn">Search Packages</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-packages">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured International Packages</h2>
+                <p>Discover our handpicked selection of international tour packages designed to provide unforgettable experiences.</p>
+            </div>
+
+            <div class="package-grid">
+                <div class="package-card">
+                    <div class="package-image">
+                        <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Paris, France">
+                    </div>
+                    <div class="package-details">
+                        <h3 class="package-title">Romantic Paris</h3>
+                        <div class="package-price">$1,299 <span>per person</span></div>
+                        <ul class="package-features">
+                            <li><i class="fas fa-calendar"></i> 5 Days / 4 Nights</li>
+                            <li><i class="fas fa-bed"></i> 4-Star Accommodation</li>
+                            <li><i class="fas fa-utensils"></i> Breakfast Included</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Eiffel Tower, Louvre, Seine River Cruise</li>
+                        </ul>
+                        <div class="package-cta">
+                            <a href="#" class="btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="package-card">
+                    <div class="package-image">
+                        <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Dubai, UAE">
+                    </div>
+                    <div class="package-details">
+                        <h3 class="package-title">Dubai Extravaganza</h3>
+                        <div class="package-price">$1,599 <span>per person</span></div>
+                        <ul class="package-features">
+                            <li><i class="fas fa-calendar"></i> 6 Days / 5 Nights</li>
+                            <li><i class="fas fa-bed"></i> 5-Star Accommodation</li>
+                            <li><i class="fas fa-utensils"></i> Half Board</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Burj Khalifa, Desert Safari, Dubai Mall</li>
+                        </ul>
+                        <div class="package-cta">
+                            <a href="#" class="btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="package-card">
+                    <div class="package-image">
+                        <img src="https://images.unsplash.com/photo-1533929736458-ca588d08c8be?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Bali, Indonesia">
+                    </div>
+                    <div class="package-details">
+                        <h3 class="package-title">Bali Paradise</h3>
+                        <div class="package-price">$1,199 <span>per person</span></div>
+                        <ul class="package-features">
+                            <li><i class="fas fa-calendar"></i> 7 Days / 6 Nights</li>
+                            <li><i class="fas fa-bed"></i> Private Villa</li>
+                            <li><i class="fas fa-utensils"></i> Breakfast Included</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Ubud, Kuta Beach, Tanah Lot Temple</li>
+                        </ul>
+                        <div class="package-cta">
+                            <a href="#" class="btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="package-card">
+                    <div class="package-image">
+                        <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Tokyo, Japan">
+                    </div>
+                    <div class="package-details">
+                        <h3 class="package-title">Tokyo Explorer</h3>
+                        <div class="package-price">$1,899 <span>per person</span></div>
+                        <ul class="package-features">
+                            <li><i class="fas fa-calendar"></i> 8 Days / 7 Nights</li>
+                            <li><i class="fas fa-bed"></i> 4-Star Accommodation</li>
+                            <li><i class="fas fa-utensils"></i> Breakfast Included</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Tokyo Tower, Mt. Fuji, Akihabara</li>
+                        </ul>
+                        <div class="package-cta">
+                            <a href="#" class="btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="package-card">
+                    <div class="package-image">
+                        <img src="https://images.unsplash.com/photo-1525874684015-58379d421a52?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Santorini, Greece">
+                    </div>
+                    <div class="package-details">
+                        <h3 class="package-title">Greek Island Getaway</h3>
+                        <div class="package-price">$1,799 <span>per person</span></div>
+                        <ul class="package-features">
+                            <li><i class="fas fa-calendar"></i> 7 Days / 6 Nights</li>
+                            <li><i class="fas fa-bed"></i> Boutique Hotel</li>
+                            <li><i class="fas fa-utensils"></i> Breakfast Included</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Santorini, Mykonos, Athens</li>
+                        </ul>
+                        <div class="package-cta">
+                            <a href="#" class="btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="package-card">
+                    <div class="package-image">
+                        <img src="https://images.unsplash.com/photo-1562790351-d273a961e0e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="New York, USA">
+                    </div>
+                    <div class="package-details">
+                        <h3 class="package-title">New York City Break</h3>
+                        <div class="package-price">$1,499 <span>per person</span></div>
+                        <ul class="package-features">
+                            <li><i class="fas fa-calendar"></i> 5 Days / 4 Nights</li>
+                            <li><i class="fas fa-bed"></i> 4-Star Accommodation</li>
+                            <li><i class="fas fa-utensils"></i> Room Only</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Times Square, Statue of Liberty, Central Park</li>
+                        </ul>
+                        <div class="package-cta">
+                            <a href="#" class="btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Travelers Say</h2>
+                <p>Read about the experiences of travelers who have booked with Globedge Holdings.</p>
+            </div>
+
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>Our trip to Paris was absolutely magical! The itinerary was perfectly planned, and the accommodations were excellent. Our tour guide was knowledgeable and friendly. We'll definitely book with Globedge Holdings again!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Sarah Johnson">
+                        <div class="author-details">
+                            <h4>Sarah Johnson</h4>
+                            <p>Paris, France Tour</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>The Dubai package exceeded our expectations. From the desert safari to the Burj Khalifa visit, everything was well-organized. The hotel was luxurious, and the staff was incredibly helpful. Highly recommended!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen">
+                        <div class="author-details">
+                            <h4>Michael Chen</h4>
+                            <p>Dubai Extravaganza</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>Bali was a dream come true! Our private villa was stunning, and the itinerary allowed us to experience both the cultural and natural beauty of the island. The local guides were exceptional. Thank you, Globedge Holdings!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/42.jpg" alt="Emma Rodriguez">
+                        <div class="author-details">
+                            <h4>Emma Rodriguez</h4>
+                            <p>Bali Paradise</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="ChatGPT Image May 28, 2025, 08_58_25 PM.png" alt="Globedge Holdings Logo">
+                    <h2>Globedge Holdings</h2>
+                    <p>Your global partner for success</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Business Avenue, Dubai, UAE</p>
+                    <p><i class="fas fa-phone"></i> +971 4 123 4567</p>
+                    <p><i class="fas fa-envelope"></i> info@globedgeholdings.com</p>
+                </div>
+                <div class="footer-social">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Globedge Holdings. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Toggle
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+
+            // Booking Tabs
+            const tabButtons = document.querySelectorAll('.booking-tab');
+            const tabContents = document.querySelectorAll('.booking-content');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Remove active class from all tabs
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to current tab
+                    this.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+
+            // Form Submissions
+            const searchForms = document.querySelectorAll('.search-form');
+            
+            searchForms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('This is a demo. In a real application, this would search for available options.');
+                });
+            });
+
+            // Package Detail Links
+            const packageLinks = document.querySelectorAll('.package-cta .btn');
+            
+            packageLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('This is a demo. In a real application, this would show detailed package information and booking options.');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
