@@ -103,7 +103,7 @@ header .container {
 }
 
 .logo img {
-    max-height: 120px;
+    height: 70px;
     margin-right: 15px;
 }
 
@@ -111,19 +111,21 @@ header .container {
     display: inline-block;
 }
 
-.logo-text h1 {
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin: 0;
-    line-height: 1.2;
-}
-
 .logo-text p {
-    font-size: 16px;
+    font-size: 14px;
     color: var(--secondary-color);
     margin: 0;
     font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .logo img {
+        height: 60px;
+    }
+    
+    .logo-text p {
+        font-size: 12px;
+    }
 }
 
 .nav-menu {
@@ -159,21 +161,45 @@ header .container {
     background-position: center;
     color: white;
     text-align: center;
-    padding: 150px 0;
-    margin-top: 90px;
+    padding: 180px 0 150px;
+    margin-top: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero .container {
+    max-width: 800px;
 }
 
 .hero h1 {
-    font-size: 3rem;
+    font-size: 3.5rem;
     margin-bottom: 20px;
+    font-weight: 700;
+    line-height: 1.2;
 }
 
 .hero p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
+    font-size: 1.3rem;
+    margin-bottom: 35px;
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 140px 0 120px;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero p {
+        font-size: 1.1rem;
+    }
 }
 
 /* About Section */
