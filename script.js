@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // WhatsApp phone number - India number format
+    const whatsappNumber = '919633885407';
+    
     // Mobile Menu Toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
@@ -362,6 +365,85 @@ document.addEventListener('DOMContentLoaded', function() {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             submitContactForm(this);
+        });
+    }
+    
+    // WhatsApp Contact Button
+    const whatsappContactBtn = document.getElementById('whatsapp-contact');
+    if (whatsappContactBtn) {
+        whatsappContactBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const phoneInput = document.getElementById('phone');
+            const serviceInput = document.getElementById('service');
+            const messageInput = document.getElementById('message');
+            
+            // Create WhatsApp message - more structured and detailed
+            let whatsappMessage = 'Hello Globedge Holdings,\n\n';
+            
+            if (nameInput && nameInput.value) {
+                whatsappMessage += 'My name is ' + nameInput.value + '.\n';
+            }
+            
+            if (serviceInput && serviceInput.value) {
+                const serviceText = serviceInput.options[serviceInput.selectedIndex].text;
+                whatsappMessage += 'I\'m interested in your ' + serviceText + ' services.\n';
+                
+                // Add specific questions based on service type
+                switch(serviceInput.value) {
+                    case 'construction':
+                        whatsappMessage += 'I would like to discuss a potential construction project.\n';
+                        break;
+                    case 'engineering':
+                        whatsappMessage += 'I need assistance with MEP engineering services for my project.\n';
+                        break;
+                    case 'travel':
+                        whatsappMessage += 'I\'m looking for information about travel opportunities in Dubai.\n';
+                        break;
+                    case 'recruitment':
+                        whatsappMessage += 'I\'m interested in your recruitment services.\n';
+                        break;
+                    case 'jobs':
+                        whatsappMessage += 'I\'m looking for job opportunities in Dubai.\n';
+                        break;
+                    case 'business':
+                        whatsappMessage += 'I need assistance with business services.\n';
+                        break;
+                    case 'it':
+                        whatsappMessage += 'I\'m interested in your IT solutions.\n';
+                        break;
+                    case 'marketing':
+                        whatsappMessage += 'I would like to know more about your digital marketing services.\n';
+                        break;
+                }
+            } else {
+                whatsappMessage += 'I\'m interested in your services.\n';
+            }
+            
+            if (messageInput && messageInput.value) {
+                whatsappMessage += '\nDetails of my inquiry:\n' + messageInput.value + '\n';
+            }
+            
+            whatsappMessage += '\nPlease contact me';
+            
+            if (phoneInput && phoneInput.value) {
+                whatsappMessage += ' at ' + phoneInput.value;
+            }
+            
+            if (emailInput && emailInput.value) {
+                whatsappMessage += (phoneInput && phoneInput.value ? ' or' : '') + ' via email at ' + emailInput.value;
+            }
+            
+            whatsappMessage += '.\n\nThank you.';
+            
+            // Encode the message for URL
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            
+            // Open WhatsApp with the message
+            window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
         });
     }
 
