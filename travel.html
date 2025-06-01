@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Services - Globedge Holdings</title>
+    <title>Travel & Job Hunt Services - Globedge Holdings</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         /* Travel Page Specific Styles */
         .travel-hero {
@@ -230,6 +230,67 @@
             color: #6c757d;
             font-size: 0.9rem;
         }
+        
+        .page-header {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1503220317375-aaad61436b1b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 150px 0;
+            margin-top: 90px;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+        }
+        
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .menu-toggle {
+            display: none;
+        }
+        
+        .nav-menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-menu li {
+            margin-right: 30px;
+        }
+        
+        .nav-menu a {
+            color: var(--text-color);
+            transition: color 0.3s ease;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-menu .active {
+            color: var(--primary-color);
+        }
     </style>
 </head>
 <body>
@@ -237,9 +298,7 @@
         <div class="container">
             <div class="logo-container">
                 <div class="logo">
-                    <a href="index.html">
-                        <img src="ChatGPT Image May 28, 2025, 08_58_25 PM.png" alt="Globedge Holdings Logo">
-                    </a>
+                    <img src="Assets/ChatGPT Image May 28, 2025, 08_58_25 PM.png" alt="Globedge Holdings Logo">
                 </div>
                 <div class="logo-text">
                     <p>Your Global Partner for Success</p>
@@ -252,263 +311,155 @@
                 <ul class="nav-menu">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="index.html#about">About Us</a></li>
-                    <li><a href="index.html#services">Services</a></li>
+                    <li class="dropdown">
+                        <a href="index.html#services">Services</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="construction.html">Construction & Contracting</a></li>
+                            <li><a href="engineering.html">MEP Engineering</a></li>
+                            <li><a href="travel.html" class="active">Travel & Job Hunt</a></li>
+                            <li><a href="recruitment.html">Recruitment & Talent</a></li>
+                            <li><a href="business.html">Business & IT Solutions</a></li>
+                        </ul>
+                    </li>
                     <li><a href="index.html#contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <section class="travel-hero">
+    <section class="page-header">
         <div class="container">
-            <h1>Travel Services</h1>
-            <p>Explore the world with Globedge Holdings. We offer comprehensive travel solutions tailored to your needs.</p>
+            <h1>Travel & Job Hunt Services</h1>
+            <p>Your gateway to global opportunities and seamless travel experiences</p>
         </div>
     </section>
 
-    <section class="booking-section">
+    <section class="service-detail">
         <div class="container">
-            <div class="section-title">
-                <h2>Book Your Next Adventure</h2>
-                <p>Find the best deals on flights, hotels, and tour packages with our easy booking system.</p>
+            <div class="service-intro">
+                <div class="service-icon large">
+                    <i class="fas fa-plane"></i>
+                </div>
+                <h2>Travel & Global Opportunities</h2>
+                <p>At Globedge Holdings, we provide comprehensive travel services and job hunting assistance for individuals seeking opportunities abroad. Our experienced team offers personalized solutions for both leisure travelers and job seekers, ensuring a seamless experience from planning to execution.</p>
             </div>
-
-            <div class="booking-tabs">
-                <button class="booking-tab active" data-tab="flights">Flights</button>
-                <button class="booking-tab" data-tab="hotels">Hotels</button>
-                <button class="booking-tab" data-tab="packages">Tour Packages</button>
-            </div>
-
-            <div id="flights" class="booking-content active">
-                <h3>Search for Flights</h3>
-                <form class="search-form">
-                    <div class="form-group">
-                        <label for="flight-from">From</label>
-                        <input type="text" id="flight-from" placeholder="City or Airport">
-                    </div>
-                    <div class="form-group">
-                        <label for="flight-to">To</label>
-                        <input type="text" id="flight-to" placeholder="City or Airport">
-                    </div>
-                    <div class="form-group">
-                        <label for="flight-depart">Departure Date</label>
-                        <input type="date" id="flight-depart">
-                    </div>
-                    <div class="form-group">
-                        <label for="flight-return">Return Date</label>
-                        <input type="date" id="flight-return">
-                    </div>
-                    <div class="form-group">
-                        <label for="flight-passengers">Passengers</label>
-                        <select id="flight-passengers">
-                            <option value="1">1 Passenger</option>
-                            <option value="2">2 Passengers</option>
-                            <option value="3">3 Passengers</option>
-                            <option value="4">4 Passengers</option>
-                            <option value="5">5+ Passengers</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn search-btn">Search Flights</button>
-                </form>
-            </div>
-
-            <div id="hotels" class="booking-content">
-                <h3>Find Hotels</h3>
-                <form class="search-form">
-                    <div class="form-group">
-                        <label for="hotel-destination">Destination</label>
-                        <input type="text" id="hotel-destination" placeholder="City or Hotel Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="hotel-checkin">Check-in Date</label>
-                        <input type="date" id="hotel-checkin">
-                    </div>
-                    <div class="form-group">
-                        <label for="hotel-checkout">Check-out Date</label>
-                        <input type="date" id="hotel-checkout">
-                    </div>
-                    <div class="form-group">
-                        <label for="hotel-rooms">Rooms</label>
-                        <select id="hotel-rooms">
-                            <option value="1">1 Room</option>
-                            <option value="2">2 Rooms</option>
-                            <option value="3">3 Rooms</option>
-                            <option value="4">4+ Rooms</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="hotel-guests">Guests</label>
-                        <select id="hotel-guests">
-                            <option value="1">1 Guest</option>
-                            <option value="2">2 Guests</option>
-                            <option value="3">3 Guests</option>
-                            <option value="4">4 Guests</option>
-                            <option value="5">5+ Guests</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn search-btn">Search Hotels</button>
-                </form>
-            </div>
-
-            <div id="packages" class="booking-content">
-                <h3>Explore Tour Packages</h3>
-                <form class="search-form">
-                    <div class="form-group">
-                        <label for="package-destination">Destination</label>
-                        <select id="package-destination">
-                            <option value="">Select Destination</option>
-                            <option value="europe">Europe</option>
-                            <option value="asia">Asia</option>
-                            <option value="americas">Americas</option>
-                            <option value="africa">Africa</option>
-                            <option value="middle-east">Middle East</option>
-                            <option value="oceania">Australia & Oceania</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="package-duration">Duration</label>
-                        <select id="package-duration">
-                            <option value="">Select Duration</option>
-                            <option value="1-3">1-3 Days</option>
-                            <option value="4-7">4-7 Days</option>
-                            <option value="8-14">8-14 Days</option>
-                            <option value="15+">15+ Days</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="package-budget">Budget</label>
-                        <select id="package-budget">
-                            <option value="">Select Budget</option>
-                            <option value="economy">Economy</option>
-                            <option value="standard">Standard</option>
-                            <option value="premium">Premium</option>
-                            <option value="luxury">Luxury</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn search-btn">Search Packages</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <section class="featured-packages">
-        <div class="container">
-            <div class="section-title">
-                <h2>Featured International Packages</h2>
-                <p>Discover our handpicked selection of international tour packages designed to provide unforgettable experiences.</p>
-            </div>
-
-            <div class="package-grid">
-                <div class="package-card">
-                    <div class="package-image">
-                        <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Paris, France">
-                    </div>
-                    <div class="package-details">
-                        <h3 class="package-title">Romantic Paris</h3>
-                        <div class="package-price">$1,299 <span>per person</span></div>
-                        <ul class="package-features">
-                            <li><i class="fas fa-calendar"></i> 5 Days / 4 Nights</li>
-                            <li><i class="fas fa-bed"></i> 4-Star Accommodation</li>
-                            <li><i class="fas fa-utensils"></i> Breakfast Included</li>
-                            <li><i class="fas fa-map-marker-alt"></i> Eiffel Tower, Louvre, Seine River Cruise</li>
-                        </ul>
-                        <div class="package-cta">
-                            <a href="#" class="btn">View Details</a>
+            
+            <div class="service-features">
+                <div class="service-category">
+                    <h3 class="category-title"><i class="fas fa-globe-americas"></i> Travel Services</h3>
+                    <div class="service-grid">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-plane-departure"></i>
+                            </div>
+                            <h4>Flight Bookings</h4>
+                            <p>Competitive airfares for domestic and international flights with access to major airlines and exclusive deals.</p>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-hotel"></i>
+                            </div>
+                            <h4>Hotel Accommodations</h4>
+                            <p>Wide range of accommodation options from budget-friendly to luxury hotels, resorts, and apartments worldwide.</p>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-map-marked-alt"></i>
+                            </div>
+                            <h4>Tour Packages</h4>
+                            <p>Curated travel packages for popular destinations including transportation, accommodation, and guided tours.</p>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-passport"></i>
+                            </div>
+                            <h4>Visa Assistance</h4>
+                            <p>Expert guidance for visa applications, documentation preparation, and processing for various countries.</p>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <h4>Business Travel</h4>
+                            <p>Specialized travel arrangements for corporate clients including meeting coordination and business-class bookings.</p>
                         </div>
                     </div>
                 </div>
-
-                <div class="package-card">
-                    <div class="package-image">
-                        <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Dubai, UAE">
-                    </div>
-                    <div class="package-details">
-                        <h3 class="package-title">Dubai Extravaganza</h3>
-                        <div class="package-price">$1,599 <span>per person</span></div>
-                        <ul class="package-features">
-                            <li><i class="fas fa-calendar"></i> 6 Days / 5 Nights</li>
-                            <li><i class="fas fa-bed"></i> 5-Star Accommodation</li>
-                            <li><i class="fas fa-utensils"></i> Half Board</li>
-                            <li><i class="fas fa-map-marker-alt"></i> Burj Khalifa, Desert Safari, Dubai Mall</li>
-                        </ul>
-                        <div class="package-cta">
-                            <a href="#" class="btn">View Details</a>
+                
+                <div class="service-category">
+                    <h3 class="category-title"><i class="fas fa-search-location"></i> Job Hunt Services</h3>
+                    <div class="service-grid">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <h4>Resume Preparation</h4>
+                            <p>Professional resume writing and optimization services tailored to specific industries and job markets.</p>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <h4>Interview Coaching</h4>
+                            <p>Personalized interview preparation including mock interviews, feedback, and techniques to improve performance.</p>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <h4>Job Placement</h4>
+                            <p>Connecting job seekers with potential employers across various industries and positions based on qualifications.</p>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <h4>Skills Assessment</h4>
+                            <p>Evaluation of skills and qualifications to identify suitable job opportunities and areas for improvement.</p>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <h4>Career Counseling</h4>
+                            <p>Professional guidance on career paths, industry trends, and strategies for professional development.</p>
                         </div>
                     </div>
                 </div>
-
-                <div class="package-card">
-                    <div class="package-image">
-                        <img src="https://images.unsplash.com/photo-1533929736458-ca588d08c8be?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Bali, Indonesia">
-                    </div>
-                    <div class="package-details">
-                        <h3 class="package-title">Bali Paradise</h3>
-                        <div class="package-price">$1,199 <span>per person</span></div>
-                        <ul class="package-features">
-                            <li><i class="fas fa-calendar"></i> 7 Days / 6 Nights</li>
-                            <li><i class="fas fa-bed"></i> Private Villa</li>
-                            <li><i class="fas fa-utensils"></i> Breakfast Included</li>
-                            <li><i class="fas fa-map-marker-alt"></i> Ubud, Kuta Beach, Tanah Lot Temple</li>
-                        </ul>
-                        <div class="package-cta">
-                            <a href="#" class="btn">View Details</a>
+                
+                <div class="service-category">
+                    <h3 class="category-title"><i class="fas fa-clipboard-list"></i> Documentation Services</h3>
+                    <div class="service-grid">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-stamp"></i>
+                            </div>
+                            <h4>Document Authentication</h4>
+                            <p>Assistance with document verification, attestation, and legalization for international use.</p>
                         </div>
-                    </div>
-                </div>
-
-                <div class="package-card">
-                    <div class="package-image">
-                        <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Tokyo, Japan">
-                    </div>
-                    <div class="package-details">
-                        <h3 class="package-title">Tokyo Explorer</h3>
-                        <div class="package-price">$1,899 <span>per person</span></div>
-                        <ul class="package-features">
-                            <li><i class="fas fa-calendar"></i> 8 Days / 7 Nights</li>
-                            <li><i class="fas fa-bed"></i> 4-Star Accommodation</li>
-                            <li><i class="fas fa-utensils"></i> Breakfast Included</li>
-                            <li><i class="fas fa-map-marker-alt"></i> Tokyo Tower, Mt. Fuji, Akihabara</li>
-                        </ul>
-                        <div class="package-cta">
-                            <a href="#" class="btn">View Details</a>
+                        
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-language"></i>
+                            </div>
+                            <h4>Translation Services</h4>
+                            <p>Professional translation of personal and professional documents into multiple languages.</p>
                         </div>
-                    </div>
-                </div>
-
-                <div class="package-card">
-                    <div class="package-image">
-                        <img src="https://images.unsplash.com/photo-1525874684015-58379d421a52?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Santorini, Greece">
-                    </div>
-                    <div class="package-details">
-                        <h3 class="package-title">Greek Island Getaway</h3>
-                        <div class="package-price">$1,799 <span>per person</span></div>
-                        <ul class="package-features">
-                            <li><i class="fas fa-calendar"></i> 7 Days / 6 Nights</li>
-                            <li><i class="fas fa-bed"></i> Boutique Hotel</li>
-                            <li><i class="fas fa-utensils"></i> Breakfast Included</li>
-                            <li><i class="fas fa-map-marker-alt"></i> Santorini, Mykonos, Athens</li>
-                        </ul>
-                        <div class="package-cta">
-                            <a href="#" class="btn">View Details</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="package-card">
-                    <div class="package-image">
-                        <img src="https://images.unsplash.com/photo-1562790351-d273a961e0e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="New York, USA">
-                    </div>
-                    <div class="package-details">
-                        <h3 class="package-title">New York City Break</h3>
-                        <div class="package-price">$1,499 <span>per person</span></div>
-                        <ul class="package-features">
-                            <li><i class="fas fa-calendar"></i> 5 Days / 4 Nights</li>
-                            <li><i class="fas fa-bed"></i> 4-Star Accommodation</li>
-                            <li><i class="fas fa-utensils"></i> Room Only</li>
-                            <li><i class="fas fa-map-marker-alt"></i> Times Square, Statue of Liberty, Central Park</li>
-                        </ul>
-                        <div class="package-cta">
-                            <a href="#" class="btn">View Details</a>
+                        
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-id-card"></i>
+                            </div>
+                            <h4>Work Permit Processing</h4>
+                            <p>Guidance and assistance with work permit applications and related documentation for various countries.</p>
                         </div>
                     </div>
                 </div>
@@ -516,63 +467,19 @@
         </div>
     </section>
 
-    <section class="testimonials">
-        <div class="container">
-            <div class="section-title">
-                <h2>What Our Travelers Say</h2>
-                <p>Read about the experiences of travelers who have booked with Globedge Holdings.</p>
-            </div>
-
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>Our trip to Paris was absolutely magical! The itinerary was perfectly planned, and the accommodations were excellent. Our tour guide was knowledgeable and friendly. We'll definitely book with Globedge Holdings again!</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Sarah Johnson">
-                        <div class="author-details">
-                            <h4>Sarah Johnson</h4>
-                            <p>Paris, France Tour</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>The Dubai package exceeded our expectations. From the desert safari to the Burj Khalifa visit, everything was well-organized. The hotel was luxurious, and the staff was incredibly helpful. Highly recommended!</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen">
-                        <div class="author-details">
-                            <h4>Michael Chen</h4>
-                            <p>Dubai Extravaganza</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>Bali was a dream come true! Our private villa was stunning, and the itinerary allowed us to experience both the cultural and natural beauty of the island. The local guides were exceptional. Thank you, Globedge Holdings!</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/women/42.jpg" alt="Emma Rodriguez">
-                        <div class="author-details">
-                            <h4>Emma Rodriguez</h4>
-                            <p>Bali Paradise</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="cta-container">
+        <h3>Ready to Explore New Opportunities?</h3>
+        <p>Contact our team today to discuss your travel plans or job search needs. We're here to help you achieve your goals.</p>
+        <a href="index.html#contact" class="btn btn-primary">Get in Touch</a>
+    </div>
 
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="ChatGPT Image May 28, 2025, 08_58_25 PM.png" alt="Globedge Holdings Logo">
+                    <img src="Assets/ChatGPT Image May 28, 2025, 08_58_25 PM.png" alt="Globedge Holdings Logo">
                     <h2>Globedge Holdings</h2>
-                    <p>Your global partner for success</p>
+                    <p>Your Global Partner for Success</p>
                 </div>
                 <div class="footer-links">
                     <h3>Quick Links</h3>

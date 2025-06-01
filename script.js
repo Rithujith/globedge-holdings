@@ -2,20 +2,71 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mobile Menu Toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
+    const dropdownItems = document.querySelectorAll('.dropdown');
 
     if (menuToggle) {
         menuToggle.addEventListener('click', function() {
             navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
         });
     }
+    
+    // Handle dropdown toggle for mobile
+    dropdownItems.forEach(dropdown => {
+        const dropdownLink = dropdown.querySelector('a');
+        if (dropdownLink && window.innerWidth <= 992) {
+            dropdownLink.addEventListener('click', function(e) {
+                if (window.innerWidth <= 992) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                }
+            });
+        }
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+        const isClickInsideNav = navMenu && navMenu.contains(event.target);
+        const isClickOnToggle = menuToggle && menuToggle.contains(event.target);
+        
+        if (!isClickInsideNav && !isClickOnToggle && navMenu && navMenu.classList.contains('active')) {
+            navMenu.classList.remove('active');
+            menuToggle.classList.remove('active');
+        }
+    });
+    
+    // Handle active navigation links
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    
+    navLinks.forEach(link => {
+        const linkHref = link.getAttribute('href');
+        if (linkHref === currentPage || 
+            (currentPage === 'index.html' && linkHref === 'index.html') ||
+            (linkHref.includes('#') && currentPage === 'index.html')) {
+            link.classList.add('active');
+            
+            // If this is a service page, highlight the Services dropdown
+            if (['construction.html', 'engineering.html', 'travel.html', 'recruitment.html', 'business.html'].includes(currentPage)) {
+                const servicesDropdown = document.querySelector('.dropdown > a[href="#services"]');
+                if (servicesDropdown) {
+                    servicesDropdown.classList.add('active');
+                }
+            }
+        }
+    });
 
     // Smooth Scrolling for Navigation Links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            if (navMenu.classList.contains('active')) {
-                navMenu.classList.remove('active');
+            // Only prevent default if not a dropdown toggle in mobile view
+            if (!(this.parentNode.classList.contains('dropdown') && window.innerWidth <= 992)) {
+                e.preventDefault();
+                
+                if (navMenu && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                }
             }
 
             const targetId = this.getAttribute('href');

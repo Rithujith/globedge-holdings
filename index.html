@@ -12,7 +12,7 @@
         <div class="container">
             <div class="logo-container">
                 <div class="logo">
-                    <img src="ChatGPT Image May 28, 2025, 08_58_25 PM.png" alt="Globedge Holdings Logo">
+                    <img src="Assets/ChatGPT Image May 28, 2025, 08_58_25 PM.png" alt="Globedge Holdings Logo">
                 </div>
                 <div class="logo-text">
                     <p>Your Global Partner for Success</p>
@@ -25,7 +25,16 @@
                 <ul class="nav-menu">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About Us</a></li>
-                    <li><a href="#services">Services</a></li>
+                    <li class="dropdown">
+                        <a href="#services">Services</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="construction.html">Construction & Contracting</a></li>
+                            <li><a href="engineering.html">MEP Engineering</a></li>
+                            <li><a href="travel.html">Travel & Job Hunt</a></li>
+                            <li><a href="recruitment.html">Recruitment & Talent</a></li>
+                            <li><a href="business.html">Business & IT Solutions</a></li>
+                        </ul>
+                    </li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -34,8 +43,9 @@
 
     <section id="home" class="hero">
         <div class="container">
-            <h1>Welcome to Globedge Holdings</h1>
-            <p>Your global partner for travel, business solutions, construction, and career opportunities</p>
+            <h1>Globedge Holdings</h1>
+            <p class="hero-tagline">Your Complete Partner for Construction, Engineering, Recruitment, Travel, and Business Solutions</p>
+            <p>Based in Dubai and serving clients worldwide, Globedge Holdings delivers expert solutions across multiple industries.</p>
             <a href="#services" class="btn">Explore Our Services</a>
         </div>
     </section>
@@ -43,49 +53,75 @@
     <section id="about" class="about">
         <div class="container">
             <h2>About Globedge Holdings</h2>
-            <p>Globedge Holdings is a multifaceted company dedicated to providing exceptional services across various sectors. With a focus on quality and customer satisfaction, we strive to exceed expectations in everything we do.</p>
-            <p>Our experienced team of professionals is committed to delivering innovative solutions tailored to meet your specific needs, whether you're looking for travel arrangements, business solutions, construction services, or career opportunities.</p>
+            <p class="tagline">Your Complete Partner for Construction, Engineering, Recruitment, Travel, and Business Solutions</p>
+            <p>Based in Dubai and serving clients worldwide, Globedge Holdings delivers expert solutions across construction, engineering, talent recruitment, travel services, business support, IT solutions, and digital marketing.</p>
+            <div class="why-choose-us">
+                <h3>💎 Why Choose Globedge Holdings?</h3>
+                <ul class="benefits-list">
+                    <li><i class="fas fa-check-circle"></i> Industry-Integrated Service Portfolio</li>
+                    <li><i class="fas fa-check-circle"></i> Dubai-Based, Globally Connected</li>
+                    <li><i class="fas fa-check-circle"></i> Affordable & Custom-Tailored Packages</li>
+                    <li><i class="fas fa-check-circle"></i> Trusted by Individuals, Startups & Enterprises</li>
+                    <li><i class="fas fa-check-circle"></i> One Team – Multiple Solutions</li>
+                </ul>
+            </div>
         </div>
     </section>
 
     <section id="services" class="services">
         <div class="container">
             <h2>Our Services</h2>
+            <p class="section-intro">Globedge Holdings offers comprehensive solutions across multiple industries. Click on any service to learn more.</p>
+            
             <div class="service-grid">
-                <div class="service-card" id="travel">
-                    <div class="service-icon">
-                        <i class="fas fa-plane"></i>
-                    </div>
-                    <h3>Travel Services</h3>
-                    <p>Comprehensive travel solutions for individuals and businesses, including flight bookings, accommodation, and tour packages.</p>
-                    <a href="travel.html" class="btn">Learn More</a>
-                </div>
-
-                <div class="service-card" id="business">
-                    <div class="service-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <h3>Business Solutions</h3>
-                    <p>Strategic business consulting, market analysis, and operational optimization to help your business grow and succeed.</p>
-                    <a href="javascript:void(0)" class="btn service-btn" data-service="business">Learn More</a>
-                </div>
-
+                <!-- Construction Services -->
                 <div class="service-card" id="construction">
                     <div class="service-icon">
                         <i class="fas fa-hard-hat"></i>
                     </div>
-                    <h3>Construction Contracts</h3>
-                    <p>Professional construction services, project management, and contract handling for residential and commercial projects.</p>
-                    <a href="javascript:void(0)" class="btn service-btn" data-service="construction">Learn More</a>
+                    <h3>🏗 Construction & Contracting</h3>
+                    <p>Professional construction services including architectural design, general contracting, project management, interior fit-outs, and quality control.</p>
+                    <a href="construction.html" class="btn">Learn More</a>
                 </div>
-
-                <div class="service-card" id="jobs">
+                
+                <!-- MEP Engineering -->
+                <div class="service-card" id="engineering">
                     <div class="service-icon">
-                        <i class="fas fa-search"></i>
+                        <i class="fas fa-cogs"></i>
                     </div>
-                    <h3>Job Search & Acquiring</h3>
-                    <p>Resume design, visa assistance for Dubai, job placement, accommodation setup, and paperwork handling.</p>
-                    <a href="javascript:void(0)" class="btn service-btn" data-service="jobs">Learn More</a>
+                    <h3>⚙ MEP Engineering</h3>
+                    <p>Comprehensive mechanical, electrical, and plumbing engineering solutions with smart designs, precise calculations, and energy optimization.</p>
+                    <a href="engineering.html" class="btn">Learn More</a>
+                </div>
+                
+                <!-- Travel Services -->
+                <div class="service-card" id="travel">
+                    <div class="service-icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <h3>✈ Travel & Job Hunt</h3>
+                    <p>Complete travel solutions including visa assistance, tourism packages, air ticketing, and full job hunt packages in Dubai.</p>
+                    <a href="travel.html" class="btn">Learn More</a>
+                </div>
+                
+                <!-- Recruitment Services -->
+                <div class="service-card" id="recruitment">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>🌐 Recruitment & Talent</h3>
+                    <p>Global talent acquisition services for employers and comprehensive career support for job seekers across borders.</p>
+                    <a href="recruitment.html" class="btn">Learn More</a>
+                </div>
+                
+                <!-- Business Solutions -->
+                <div class="service-card" id="business">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>💼 Business & IT Solutions</h3>
+                    <p>Professional services including accounting, IT solutions, and digital marketing to help your business grow and succeed.</p>
+                    <a href="business.html" class="btn">Learn More</a>
                 </div>
             </div>
         </div>
@@ -93,39 +129,69 @@
 
     <section id="contact" class="contact">
         <div class="container">
-            <h2>Contact Us</h2>
+            <h2>📞 Let's Work Together</h2>
             <p>Get in touch with us to learn more about our services or to request a consultation.</p>
             
-            <div class="contact-form-container">
-                <form id="contact-form" class="contact-form">
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" required>
+            <div class="contact-info">
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>📍 Dubai, UAE</p>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>📧 info@globedgeholdings.com</p>
                     </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" required>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <p>📱 +971-XX-XXXXXXX</p>
                     </div>
-                    <div class="form-group">
-                        <label for="service">Service of Interest</label>
-                        <select id="service" name="service" required>
-                            <option value="">Select a service</option>
-                            <option value="travel">Travel Services</option>
-                            <option value="business">Business Solutions</option>
-                            <option value="construction">Construction Contracts</option>
-                            <option value="jobs">Job Search & Acquiring</option>
-                        </select>
+                    <div class="contact-item">
+                        <i class="fas fa-globe"></i>
+                        <p>🌐 www.globedgeholdings.com (Coming Soon)</p>
                     </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i> Instagram</a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                     </div>
-                    <button type="submit" class="btn submit-btn">Submit</button>
-                </form>
+                </div>
+                
+                <div class="contact-form-container">
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service of Interest</label>
+                            <select id="service" name="service" required>
+                                <option value="">Select a service</option>
+                                <option value="construction">Construction & Contracting</option>
+                                <option value="mep">MEP Engineering</option>
+                                <option value="travel">Travel Services</option>
+                                <option value="recruitment">Recruitment & Talent Acquisition</option>
+                                <option value="jobs">Job Hunt in Dubai</option>
+                                <option value="business">Business & Admin Services</option>
+                                <option value="it">IT Solutions</option>
+                                <option value="marketing">Digital Marketing</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn submit-btn">Submit</button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
@@ -141,32 +207,41 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="ChatGPT Image May 28, 2025, 08_58_25 PM.png" alt="Globedge Holdings Logo">
+                    <img src="Assets/ChatGPT Image May 28, 2025, 08_58_25 PM.png" alt="Globedge Holdings Logo">
                     <h2>Globedge Holdings</h2>
-                    <p>Your global partner for success</p>
+                    <p>Your Global Partner for Success</p>
                 </div>
                 <div class="footer-links">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#home">Home</a></li>
+                        <li><a href="index.html">Home</a></li>
                         <li><a href="#about">About Us</a></li>
                         <li><a href="#services">Services</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
+                <div class="footer-links">
+                    <h3>Our Services</h3>
+                    <ul>
+                        <li><a href="construction.html">Construction & Contracting</a></li>
+                        <li><a href="engineering.html">MEP Engineering</a></li>
+                        <li><a href="travel.html">Travel & Job Hunt</a></li>
+                        <li><a href="recruitment.html">Recruitment & Talent</a></li>
+                        <li><a href="business.html">Business & IT Solutions</a></li>
+                    </ul>
+                </div>
                 <div class="footer-contact">
                     <h3>Contact Us</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> 123 Business Avenue, Dubai, UAE</p>
-                    <p><i class="fas fa-phone"></i> +971 4 123 4567</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Dubai, UAE</p>
+                    <p><i class="fas fa-phone"></i> +971-XX-XXXXXXX</p>
                     <p><i class="fas fa-envelope"></i> info@globedgeholdings.com</p>
                 </div>
                 <div class="footer-social">
                     <h3>Follow Us</h3>
                     <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
             </div>
