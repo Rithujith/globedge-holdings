@@ -1,4 +1,31 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Sticky Header Effect
+    const header = document.querySelector('header');
+    
+    if (!header) {
+        console.error('Header element not found');
+        return;
+    }
+    
+    // Initialize header state
+    header.classList.remove('scrolled');
+    
+    // Add scroll event listener
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+    
+    // Add initial scroll check
+    window.addEventListener('load', function() {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        }
+    });
+    
     // WhatsApp phone number - India number format
     const whatsappNumber = '919633885407';
     
